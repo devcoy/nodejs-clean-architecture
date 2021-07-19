@@ -7,10 +7,10 @@ import { EntityBase } from "./entity.base";
  *
  */
 
-export interface CreateEntityDto extends EntityBase {
+export interface PostEntityDto extends EntityBase {
   // ... others properties
 }
 
-export interface UpdateEntityDto extends EntityBase {
+export interface PutEntityDto extends EntityBase {
   // ... others properties
 }
