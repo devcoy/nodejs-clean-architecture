@@ -7,6 +7,8 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 
+import { logSuccess } from "./common/logger";
+
 dotenv.config();
 
 /**
@@ -34,5 +36,6 @@ app.use(express.json());
  */
 
 app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
+  // console.log(`Listening on port ${PORT}`);
+  logSuccess(`Listening on port ${PORT}`);
 });
