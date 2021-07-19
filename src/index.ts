@@ -8,8 +8,10 @@ import cors from "cors";
 import helmet from "helmet";
 
 import { logSuccess } from "./common/logger";
+import { dbConnection } from "./application/data-access/mongoose/database.config";
 
 dotenv.config();
+const ENV = process.env;
 
 /**
  * App Variables
@@ -30,6 +32,7 @@ const app = express();
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+dbConnection(String(ENV.DB_URL));
 
 /**
  * Server Activation
