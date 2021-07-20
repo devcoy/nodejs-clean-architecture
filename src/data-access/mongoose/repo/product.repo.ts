@@ -5,7 +5,7 @@ import Product, { ProductDocument } from "../../../domain/entity/product.model";
 /**
  * README
  *
- * El repo es propio de cada ORM que utilicemos, aqui se hace la logíca necesaria que implique cada ORM
+ * El repo es propio de cada ORM que utilicemos, aquí se hace la lógica necesaria que implique cada ORM
  * para persistir la info en DB.
  */
 
@@ -20,7 +20,7 @@ class ProductRepo {
      * De igual forma podemos indicar que campos deseasmos devolver del Schema.
      * Podemos implementar todos los populate() necesarios
      */
-    return await Product.find({}).populate();
+    return await Product.find({});
   }
   async findById(id: string) {
     return await Product.findById(id);
