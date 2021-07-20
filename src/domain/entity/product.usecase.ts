@@ -1,4 +1,4 @@
-import { PostEntityDto, PutEntityDto } from "./entity.dto";
+import { PostProductDto, PutProductDto } from "./product.dto";
 /**
  * README
  *
@@ -7,9 +7,9 @@ import { PostEntityDto, PutEntityDto } from "./entity.dto";
 
 export interface EntityUsecase {
   findAll: () => Promise<any>;
-  findAllByPagination: (limit: number, page: number) => Promise<any>;
+  // findAllByPagination: (limit: number, page: number) => Promise<any>;
   findById: (id: string) => Promise<any>;
-  save: (entity: PostEntityDto) => Promise<any>;
-  updateById: (id: string, entity: PutEntityDto) => Promise<string>;
+  create: (product: PostProductDto) => Promise<any>;
+  updateById: (id: string, product: PutProductDto) => Promise<string>;
   deleteById: (id: string) => Promise<string>;
 }

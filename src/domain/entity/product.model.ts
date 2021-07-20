@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { v4 as uuidv4 } from "uuid";
-import { EntityBase } from "./entity.base";
+import { ProductBase } from "./product.base";
 
 /**
  * DOCUMENTS
@@ -9,9 +9,9 @@ import { EntityBase } from "./entity.base";
  * Cada documento es una instancia de su modelo.
  */
 
-export interface EntityDocument extends EntityBase, mongoose.Document {
-  createdAt: Date;
-  // user: UserDocument["_id"];
+export interface ProductDocument extends ProductBase, mongoose.Document {
+  // user: UserDocument["_id"]; // Documento con el que se relaciona
+  // ... others properties
 }
 
 /**
@@ -21,7 +21,7 @@ export interface EntityDocument extends EntityBase, mongoose.Document {
  * define la forma de los documentos dentro de esa colección.
  */
 
-const EntitySchema = new mongoose.Schema(
+const ProductSchema = new mongoose.Schema(
   {
     id: {
       type: String,
@@ -29,18 +29,40 @@ const EntitySchema = new mongoose.Schema(
       unique: true,
       default: () => uuidv4(),
     },
+    name: {
+      type: String,
+      required: true,
+      default: "Sin nombre",
+    },
+    description: {
+      type: String,
+      required: true,
+      default: "Sin descripción",
+    },
+    price: {
+      type: Number,
+      required: true,
+      default: 0.0,
+    },
+    createdAt: {
+      type: Date,
+    },
+    updatedAt: {
+      type: Date,
+    },
+    image: {
+      type: String,
+    },
     // // Relación
     // user: {
     //   type: mongoose.Schema.Types.ObjectId, // Indicamos la relación
     //   ref: "User", // Documento con el que se relaciona
     //   required: true,
     // },
-    propertyOne: { type: String, default: true },
-    propertyTwo: { type: Number, default: true },
   },
   { timestamps: true }
 );
 
-const Entity = mongoose.model<EntityDocument>("Entity", EntitySchema);
+const Product = mongoose.model<ProductDocument>("Product", ProductSchema);
 
-export default Entity;
+export default Product;
