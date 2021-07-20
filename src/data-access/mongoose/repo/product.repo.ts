@@ -1,6 +1,8 @@
 import { DocumentDefinition } from "mongoose";
 import { logInfo } from "../../../common/logger";
-import Product, { ProductDocument } from "../../../domain/entity/product.model";
+import Product, {
+  ProductDocument,
+} from "../../../domain/product/product.model";
 
 /**
  * README
@@ -26,7 +28,7 @@ class ProductRepo {
     return await Product.findById(id);
   }
 
-  async createEntity(product: DocumentDefinition<ProductDocument>) {
+  async create(product: DocumentDefinition<ProductDocument>) {
     try {
       return await Product.create(product);
     } catch (err: unknown) {
