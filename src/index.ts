@@ -9,6 +9,7 @@ import helmet from "helmet";
 
 import { logSuccess } from "./common/logger";
 import { dbConnection } from "./data-access/mongoose/database.config";
+import { productRouter } from "./infrastructure/routers/product.router";
 
 dotenv.config();
 const ENV = process.env;
@@ -33,6 +34,11 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 dbConnection(String(ENV.DB_URL));
+
+/**
+ * Router
+ */
+app.use("/api/product", productRouter);
 
 /**
  * Server Activation
