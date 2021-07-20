@@ -1,5 +1,6 @@
 import express from "express";
 import productService from "../services/product.service";
+import { logInfo } from "../../common/logger";
 
 class ProductController {
   async listProducts(req: express.Request, res: express.Response) {
@@ -8,7 +9,8 @@ class ProductController {
   }
 
   async getProductById(req: express.Request, res: express.Response) {
-    const product = await productService.findById(req.body.id);
+    logInfo(`find product by id: ${req.params.id}`);
+    const product = await productService.findById(req.params.id);
     res.status(200).send(product);
   }
 

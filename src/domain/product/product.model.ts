@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { v4 as uuidv4 } from "uuid";
+
 import { ProductBase } from "./product.base";
 
 /**
@@ -27,7 +27,6 @@ const ProductSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
-      default: () => uuidv4(),
     },
     name: {
       type: String,
@@ -62,6 +61,14 @@ const ProductSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+/**
+ * Permite parsear que info vamos a retornar del objeto
+ */
+ProductSchema.method("toJSON", function () {
+  const { id, ...object } = this.toObject();
+  return object;
+});
 
 const Product = mongoose.model<ProductDocument>("Product", ProductSchema);
 

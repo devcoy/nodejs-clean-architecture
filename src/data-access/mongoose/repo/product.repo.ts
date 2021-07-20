@@ -1,4 +1,5 @@
 import { DocumentDefinition } from "mongoose";
+import { v4 as uuidv4 } from "uuid";
 import { logInfo } from "../../../common/logger";
 import Product, {
   ProductDocument,
@@ -29,6 +30,8 @@ class ProductRepo {
   }
 
   async create(product: DocumentDefinition<ProductDocument>) {
+    const id: string = uuidv4();
+    product = { id, ...product };
     try {
       return await Product.create(product);
     } catch (err: unknown) {
