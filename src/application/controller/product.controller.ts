@@ -1,5 +1,5 @@
 import express from "express";
-import productService from "../services/product.service";
+import productService from "../service/product.service";
 import { logInfo } from "../../common/logger";
 
 class ProductController {

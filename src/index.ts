@@ -10,6 +10,7 @@ import helmet from "helmet";
 import { logSuccess } from "./common/logger";
 import { dbConnection } from "./data-access/mongoose/database.config";
 import { productRouter } from "./infrastructure/routers/product.router";
+import { resourceNotFoundMiddleware } from "./application/middleware/resource-not-found.middleware";
 
 dotenv.config();
 const ENV = process.env;
@@ -39,6 +40,11 @@ dbConnection(String(ENV.DB_URL));
  * Router
  */
 app.use("/api/product", productRouter);
+
+/**
+ * Middleware
+ */
+app.use(resourceNotFoundMiddleware);
 
 /**
  * Server Activation

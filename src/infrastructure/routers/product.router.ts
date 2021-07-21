@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import productController from "../../application/controllers/product.controller";
+import productController from "../../application/controller/product.controller";
 /**
  * Required External Modules and Interfaces
  */
